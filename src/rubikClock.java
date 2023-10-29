@@ -8,3 +8,5 @@ public class rubikClock {
 
     public void increaseHour() { hour = (hour%12) + 1; }
 }
+
+
