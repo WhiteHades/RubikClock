@@ -1,30 +1,29 @@
 import javax.swing.*;
 
 public class rubikController {
-    private rubikGUI gui;
+    private rubikGUI rubikgui;
     private rubikModel rubikmodel;
 
-    public rubikController(rubikModel rubikmodel, rubikGUI gui) {
+    public rubikController(rubikModel rubikmodel, rubikGUI rubikgui) {
         this.rubikmodel = rubikmodel;
-        this.gui = gui;
-        setupListeners();
+        this.rubikgui = rubikgui;
+        addListenerAction();
     }
 
-    private void setupListeners() {
+    private void addListenerAction() {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                final int x = i;
-                final int y = j;
-                gui.getButton(i, j).addActionListener(e -> {
+                int x = i;
+                int y = j;
+                rubikgui.getButton(i, j).addActionListener(e -> {
                     rubikmodel.pressButton(x, y);
-                    gui.updateClockDisplays();
-                    if (rubikmodel.checkWin()) {
-                        JOptionPane.showMessageDialog(gui.getFrame(),
-                                "Congratulations! You won in " + rubikmodel.getSteps() + " steps.",
-                                "Game Over",
+                    rubikgui.updateClockTime();
+                    if (rubikmodel.checkWin()) { JOptionPane.showMessageDialog(rubikgui.getFrame(),
+                            "Well done. You win. In steps: " + rubikmodel.getSteps(),
+                                "Finished Game",
                                 JOptionPane.INFORMATION_MESSAGE);
                         rubikmodel.reset();
-                        gui.updateClockDisplays();
+                        rubikgui.updateClockTime();
                     }
                 });
             }
