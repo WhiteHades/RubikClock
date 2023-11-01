@@ -4,4 +4,5 @@ public class rubikMain {
         rubikGUI rubikgui = new rubikGUI(rubikmodel);
         rubikController controller = new rubikController(rubikmodel, rubikgui);
     }
+
 }
