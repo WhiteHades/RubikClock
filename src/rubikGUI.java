@@ -1,14 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
 
+/***
+ * The rubikGUI class (GUI). It's associated with rubikModel to indicate that it uses a rubikModel instance.
+ */
 public class rubikGUI {
     private JFrame frame;
     private final JButton[][] buttons = new JButton[2][2];
     private final JLabel[][] clockTime = new JLabel[3][3];
     private final rubikModel rubikmodel;
 
+    /***
+     * The constructor.
+     * @param rubikmodel
+     */
     public rubikGUI (rubikModel rubikmodel) { this.rubikmodel = rubikmodel; initialiseGUI(); }
 
+    /***
+     * Initialises the main GUI component of the software. It includes the clock times, the
+     * buttons, and the overall frame/layout.
+     */
     private void initialiseGUI() {
         int x = 0;
         int y = 0;
@@ -37,10 +48,23 @@ public class rubikGUI {
         }
     }
 
+    /***
+     *  Brings out the button at the given numbers in the Euclidean plane.
+     * @param x
+     * @param y
+     * @return
+     */
     public JButton getButton(int x, int y) { return buttons[x][y]; }
 
+    /***
+     * Brings out the main frame of the GUI component.
+     * @return
+     */
     public JFrame getFrame() { return frame; }
 
+    /***
+     * Updates the clock times for showing the new hours.
+     */
     public void updateClockTime() {
         for (int i=0; i<3; i++) {
             for (int j=0; j<3; j++) { clockTime[i][j].setText(String.valueOf(rubikmodel.getClock(i, j).getHour())); }
