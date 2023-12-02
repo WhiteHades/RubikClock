@@ -10,7 +10,7 @@ public class clockModel {
     /***
      * The constructor.
      */
-    public clockModel() { hour = new Random().nextInt(12) + 1; }
+    public clockModel() { hour = 12; }
 
     /***
      *  Returns the current time on the respective clock.

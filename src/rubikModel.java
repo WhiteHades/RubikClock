@@ -1,8 +1,11 @@
+import java.util.Random;
+
 /***
  * The rubikModel (Model) class. It's associated with clockModel to show that it contains an array of clockModel instances
  */
 public class rubikModel {
     private clockModel[][] clockmodel = new clockModel[3][3];
+    Random random = new Random();
     private int steps;
 
     /***
@@ -52,6 +55,13 @@ public class rubikModel {
      */
     public void reset() {
         for (int i=0; i<3; i++) { for (int j=0; j<3; j++) { clockmodel[i][j]= new clockModel(); } }
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                int presses = random.nextInt(5);
+                for (int k = 0; k < presses; k++) pressButton(i, j);
+            }
+        }
         steps = 0;
     }
 }
